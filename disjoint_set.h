@@ -1,8 +1,3 @@
-/* C++ implementation of disjoint set
- * Taken from https://www.geeksforgeeks.org/disjoint-set-data-structures/
- * I just renamed the DisjSet class DisjSet to disjoint_set, and I added the default constructor.
-*/
-
 #ifndef DISJOINT_SET_DISJOINT_SET_H
 #define DISJOINT_SET_DISJOINT_SET_H
 
@@ -12,6 +7,13 @@ using namespace std;
 class disjoint_set {
 private:
     int *rank, *parent, n;
+
+    // Creates n single item sets
+    void makeSet() {
+      for (int i = 0; i < n; i++) {
+        parent[i] = i;
+      }
+    }
 public:
     // Default constructor
     disjoint_set() = default;
@@ -22,13 +24,6 @@ public:
       parent = new int[n];
       this->n = n;
       makeSet();
-    }
-
-    // Creates n single item sets
-    void makeSet() {
-      for (int i = 0; i < n; i++) {
-        parent[i] = i;
-      }
     }
 
     // Finds set of given item x
